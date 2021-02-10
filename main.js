@@ -2,10 +2,17 @@ window.onload = function () {
   var startButton = document.getElementById("startButton");
   var stopButton = document.getElementById("stopButton");
   var reset = document.getElementById("reset");
-  var seconds = document.getElementById("seconds").innerHTML;
-  var seconds = parseInt(seconds);
-  var miliseconds = document.getElementById("miliseconds").innerHTML;
-  var miliseconds = parseInt(miliseconds);
+  var seconds, miliseconds;
+  function getTime() {
+    var seconds = document.getElementById("seconds").innerHTML;
+    var seconds = parseInt(seconds);
+    var miliseconds = document.getElementById("miliseconds").innerHTML;
+    var miliseconds = parseInt(miliseconds);
+    return [seconds, miliseconds];
+  }
+  var time = getTime();
+  seconds = time[0];
+  miliseconds = time[1];
   var interval;
   // reset button event handler
   reset.onclick = function () {
@@ -28,17 +35,18 @@ window.onload = function () {
   };
 
   function updateTime() {
-    var seconds = document.getElementById("seconds").innerHTML;
-    var seconds = parseInt(seconds);
-    var miliseconds = document.getElementById("miliseconds").innerHTML;
-    var miliseconds = parseInt(miliseconds);
+    var time = getTime();
+    seconds = time[0];
+    miliseconds = time[1];
     miliseconds++;
     document.getElementById("miliseconds").innerHTML = "" + miliseconds;
     if (miliseconds == 100) {
       seconds++;
-      if (seconds < 10)
+      if (seconds < 10) {
         document.getElementById("seconds").innerHTML = "0" + seconds;
-      else document.getElementById("seconds").innerHTML = "" + seconds;
+      } else {
+        document.getElementById("seconds").innerHTML = "" + seconds;
+      }
       document.getElementById("miliseconds").innerHTML = "00";
     }
   }
