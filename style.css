@@ -1,11 +1,11 @@
 html {
   /*background: linear-gradient(to right, #4e54c8, #8f94fb);*/
   background-color: orange;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1,
 h2 {
-  font-family: "Lato", sans-serif;
   color: white;
   text-align: center;
   font-weight: lighter;
